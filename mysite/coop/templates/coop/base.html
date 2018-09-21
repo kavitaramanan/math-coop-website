@@ -13,24 +13,48 @@
 
 <body>
   <div id="container">
-    <ul>
-      <li><a>About</a></li>
-      <li><a>Videos</a></li>
-      <li><a>Presentations</a></li>
+    <ul class="nav">
+      <li class="nav"><a>Home</a></li>
+      <li class="nav"><a>Videos</a></li>
     </ul>
+    <div>
     <div id="header">
       <h1>Math Co-op</h1>
       <p>Brown University's Math Outreach Program</p>
       <hr id="hr">
     </div>
-    <div id="content">
-        {% block content %}
-        <h3>About</h3>
-        <div class="content-text">
+    <table>
+      <tr>
+        <td id="left">
+          <div id="content">
+            {% block content %}
+              <h3>Presentations</h3>
+              <ul>
+                <li>
+                <details>
+                  <summary>Magical	Mathematics</summary>
+                  - Author: David Lipshutz<br>
+                  - Level: Ideal for children in elementary school, and may be adapted for higher grade levels.<br>
+                  <a>Download</a>
+                </details>
+                </li>
+                <li>Presentation 2</li>
+                <li>Presentation 3</li>
+                <li>Presentation 4</li>
+                <li>Presentation 5</li>
+              </ul>
+            {% endblock %} 
+          </div>
+        </td>
+        <td id="right">
+          <h3>About</h3>
+          <div class="content-text">
             <p>The Math CoOp, founded in January 2014, is a group of students, post-doctoral fellows and faculty who share a common passion for math outreach. We meet on a monthly basis to discuss mathematics and share ideas for presentations at all grade levels.</p>
-        </div>
-        {% endblock %} 
-    </div>
+          </div>
+          <img id="picture-1" src="https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+        </td>
+      </tr>
+    </table>
   </div>
 </body>
 
