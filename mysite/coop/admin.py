@@ -4,14 +4,11 @@ from coop.models import *
 
 # Register your models here.
 class PresentationFileAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-
+    pass
 class PresentationAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-
+    pass
 class TopicAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-
+    pass
 admin.site.register(PresentationFile, PresentationFileAdmin)
 admin.site.register(Presentation, PresentationAdmin)
 admin.site.register(Topic, TopicAdmin)

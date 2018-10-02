@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('dark', views.dark_index, name='dark')
+    path('manage', views.management, name="manage"),
+    path('upload', views.upload, name='upload')
 ]

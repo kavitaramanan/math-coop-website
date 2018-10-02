@@ -1,0 +1,18 @@
+{% extends "coop/base.html" %}
+
+{% block content %}
+    <h3>Admin Actions</h3>
+    <a id="uploadButtonLabel" href="{% url 'upload' %}" for="uploadButton">Upload a New Presentation</a>
+    <br>
+    <br>
+    <table>
+        {% for pres in presentations %}
+        <details>
+            <summary>Name: {{ pres.name }}</summary>
+            Author: {{ pres.author }}<br>
+            Summary: {{ pres.summary }}<br>
+            Topics: {{ pres.topics }}
+        </details>
+        {% endfor %}
+    </table>
+{% endblock %}
