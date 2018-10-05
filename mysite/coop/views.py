@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse
-from .models import Presentation, PresentationTopic, Topic
+from .models import Presentation, PresentationTopic, Topic, Outreach
+from .forms import OutreachForm
 
 import logging
 
@@ -21,10 +22,10 @@ def management(request):
     logger.warning(context)
     return  render(request, 'coop/manage.html', context)
 
-def upload(request):
+def upload_pres(request):
     if request.method == "GET":
         context = {"topics": Topic.objects.all()}
-        return render(request, 'coop/upload.html', context)
+        return render(request, 'coop/upload_pres.html', context)
     elif request.method == "POST":
         pres = Presentation()
         pres.name = request.POST.get("nameInput", "")
@@ -42,15 +43,18 @@ def upload(request):
         return redirect(reverse("manage"))
 
 def outreach(request):
-    context = {
-        "outreach_history": [
-            {"location": "Brown University", "date": "09/25/2018", "description": ";afihpeorfnlvdjknf;kjnaes;dfkjcn"},
-            {"location": "Brown University", "date": "09/26/2018", "description": ";afihpeorfnlvdjknf;kjnaes;dfkjcn"},
-            {"location": "Brown University", "date": "09/27/2018", "description": ";afihpeorfnlvdjknf;kjnaes;dfkjcn"},
-            {"location": "Brown University", "date": "09/28/2018", "description": ";afihpeorfnlvdjknf;kjnaes;dfkjcn"}
-        ]
-    }
+    context = {"outreach_history": Outreach.objects.all()}
     return render(request, 'coop/outreach.html', context)
+
+def upload_outreach(request):
+    if request.method == "GET":
+        form = OutreachForm()
+        return render(request, 'coop/upload_outreach.html', {"form": form})
+    else:
+        form = OutreachForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect(reverse('manage'))
 
 def topics(pres):
     pres_topics = list(PresentationTopic.objects.filter(presentation=pres.pk))

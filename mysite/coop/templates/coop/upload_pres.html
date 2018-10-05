@@ -1,11 +1,9 @@
 {% extends "coop/base.html" %}
 {% load static %}
 
-<script type="text/js" src="{% static 'coop/uploadLogic.js' %}"></script>
-
 {% block content %}
     <h4>Upload a New Presentations</h4>
-    <form action="{% url 'upload' %}" method="POST">
+    <form action="{% url upload_pres' %}" method="POST">
         {% csrf_token %}
         <label for="nameInput">Name: </label><input id="nameInput" name="nameInput" type="text" /><br/><br/>
         <label for="authorInput">Author: </label><input id="authorInput" name="authorInput" type="text" /><br/><br/>

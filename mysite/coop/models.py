@@ -13,3 +13,8 @@ class Presentation(models.Model):
 class PresentationTopic(models.Model):
     presentation = models.ForeignKey(Presentation, on_delete=models.CASCADE)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+
+class Outreach(models.Model):
+    location = models.CharField("Location", max_length=200)
+    date = models.DateField("Date")
+    description = models.CharField("Description", max_length=1000)

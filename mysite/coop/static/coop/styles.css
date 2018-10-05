@@ -67,7 +67,7 @@ hr {
   width: 90%;
 }
 
-#uploadButtonLabel {
+.uploadA {
   background-color: #67caea;
   color: white;
   cursor: pointer;
