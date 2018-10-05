@@ -6,12 +6,19 @@
 {% block content %}
     <h4>Upload a New Presentations</h4>
     <form action="{% url 'upload' %}" method="POST">
-        <label for="nameInput">Name: </label><input id="nameInput" type="text" /><br/><br/>
-        <label for="authorInput">Author: </label><input id="authorInput" type="text" /><br/><br/>
-        <label for="summaryInput">Summary: </label><input id="summaryInput" type="textarea" /><br/><br/>
-        <label for="fileInput">File: </label><input id="fileInput" type="file" /><br/><br/>
-        <!-- TODO: add topic functionality -->
-        
+        {% csrf_token %}
+        <label for="nameInput">Name: </label><input id="nameInput" name="nameInput" type="text" /><br/><br/>
+        <label for="authorInput">Author: </label><input id="authorInput" name="authorInput" type="text" /><br/><br/>
+        <label for="summaryInput">Summary: </label><input id="summaryInput" name="summaryInput" type="textarea" /><br/><br/>
+        <label for="fileInput">File: </label><input id="fileInput" name="fileInput" 
+            type="file" accept="application/vnd.ms-powerpoint, application/pdf"/><br/><br/>
+        Topics: 
+        <br>
+        {% for topic in topics %}
+        <label for="{{ topic.pk }}">{{ topic.name }}</label> 
+        <input id="{{ topic.pk }}" name="topicInput" type="checkbox" value="{{ topic.pk }}" /> <br>
+        {% endfor %}
+        <!-- TODO: add topic functionality (add new topics)-->
         <button type="submit">Upload</button>
     </form>
 {% endblock %}

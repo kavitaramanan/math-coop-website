@@ -11,8 +11,9 @@
 <body>
   <div id="container">
     <ul class="nav">
-      <li class="nav"><a>Home</a></li>
-      <li class="nav"><a>Videos</a></li>
+      <li class="nav"><a href="{% url 'index' %}">Home</a></li>
+      <li class="nav"><a href="https://www.youtube.com">Videos</a></li>
+      <li class="nav"><a href="{% url 'outreach' %}">Past Work</a></li>
     </ul>
     <div>
     <div id="header">
@@ -26,24 +27,18 @@
           <div id="content">
             {% block content %}
               <h3>Presentations</h3>
-              <ul>
-                <li>
-                <details>
-                  <summary>Magical	Mathematics</summary>
-                  - Author: David Lipshutz<br>
-                  - Level: Ideal for children in elementary school, and may be adapted for higher grade levels.<br>
-                  <a>Download</a>
-                </details>
-                </li>
-                <li>
-                  <details>
-                      <summary>Takeaway Games</summary>
-                      <a href="#">Download</a><br>
-                      - Author: Steven Kim<br>
-                      - Level: Ideal for students 9 - 12, and may easily be adapted for studets in K - 8.
-                    </details>
-                </li>
-              </ul>
+              <details>
+                <summary>Magical	Mathematics</summary>
+                - Author: David Lipshutz<br>
+                - Level: Ideal for children in elementary school, and may be adapted for higher grade levels.<br>
+                <a>Download</a>
+              </details>
+              <details>
+                <summary>Takeaway Games</summary>
+                <a href="#">Download</a><br>
+                - Author: Steven Kim<br>
+                - Level: Ideal for students 9 - 12, and may easily be adapted for studets in K - 8.
+              </details>
             {% endblock %} 
           </div>
         </td>

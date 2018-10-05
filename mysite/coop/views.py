@@ -1,5 +1,5 @@
-from django.shortcuts import render, HttpResponse
-from .models import Presentation, PresentationFile, PresentationTopic, Topic
+from django.shortcuts import render, HttpResponse, redirect, reverse
+from .models import Presentation, PresentationTopic, Topic
 
 import logging
 
@@ -23,7 +23,34 @@ def management(request):
 
 def upload(request):
     if request.method == "GET":
-        return render(request, 'coop/upload.html')
+        context = {"topics": Topic.objects.all()}
+        return render(request, 'coop/upload.html', context)
+    elif request.method == "POST":
+        pres = Presentation()
+        pres.name = request.POST.get("nameInput", "")
+        pres.f = request.FILES
+        pres.summary = request.POST.get("summaryInput", "")
+        pres.author = request.POST.get("authorInput", "")
+        pres.save()
+        topics = request.POST.getlist("topicInput", [])
+        for topic in topics:
+            topic = Topic.objects.get(pk=topic)
+            pt = PresentationTopic()
+            pt.presentation = pres
+            pt.topic = topic
+            pt.save()
+        return redirect(reverse("manage"))
+
+def outreach(request):
+    context = {
+        "outreach_history": [
+            {"location": "Brown University", "date": "09/25/2018", "description": ";afihpeorfnlvdjknf;kjnaes;dfkjcn"},
+            {"location": "Brown University", "date": "09/26/2018", "description": ";afihpeorfnlvdjknf;kjnaes;dfkjcn"},
+            {"location": "Brown University", "date": "09/27/2018", "description": ";afihpeorfnlvdjknf;kjnaes;dfkjcn"},
+            {"location": "Brown University", "date": "09/28/2018", "description": ";afihpeorfnlvdjknf;kjnaes;dfkjcn"}
+        ]
+    }
+    return render(request, 'coop/outreach.html', context)
 
 def topics(pres):
     pres_topics = list(PresentationTopic.objects.filter(presentation=pres.pk))
