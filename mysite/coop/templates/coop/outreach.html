@@ -1,10 +1,14 @@
 {% extends "coop/base.html" %}
 
 {% block content %}
-    <h3>Outreach History</h3>
     {% for outreach in outreach_history %}
-        <h4>Location: {{ outreach.location }} </h4>
-        <p>Date: {{ outreach.date }}<br/>Description: {{ outreach.description }}</p>
+        <h4>{{ outreach.name }}</h4>
+        <p>
+            Location: {{ outreach.location }}<br/>
+            Date: {{ outreach.date }}<br/>
+            Description: {{ outreach.description }}
+        </p>
+        <br>
     {% endfor %}
 
 {% endblock %}

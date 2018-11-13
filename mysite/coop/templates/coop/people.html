@@ -1,0 +1,9 @@
+{% extends "coop/base.html" %}
+
+{% block content %}
+  {% for person in people %}
+  <h3>{{ person.name }}</h3>
+  {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
+  <p>{{ person.bio }}</p>
+  {% endfor %}
+{% endblock %}

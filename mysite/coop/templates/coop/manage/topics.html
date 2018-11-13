@@ -1,0 +1,21 @@
+{% extends "coop/manage/base.html" %}
+
+{% block content %}
+    <h3>Admin Actions</h3>
+    <input id="newTopicNameInput" type="text" />&nbsp;&nbsp;<a id="addTopicA" onclick="uploadTopic()" class="uploadA">Add a New topic</a> <br /><br />
+    <ul id="manageTopicUL">
+            {% for topic in topics %}
+            <li class="objectInfo">
+                <!-- 
+                Note div is because of how delete functionality works
+                The parent of the parent is removed which we want to be the li not the ul
+                -->
+                <div>
+                    <b>Name</b>: {{ topic.name }}
+                    <button type="submit">Edit</button>
+                    <button id="delete{{ topic.name }}" onclick="deleteObject('topic', '{{topic.name}}')">Delete</button>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+{% endblock %}

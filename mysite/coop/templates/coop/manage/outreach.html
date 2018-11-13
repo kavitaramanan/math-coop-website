@@ -1,0 +1,34 @@
+{% extends "coop/manage/base.html" %}
+
+{% block content %}
+    <h3>Admin Actions</h3>
+    <a id="uploadOutreachA" href="{% url 'upload_outreach' %}" class="uploadA">Enter New Outreach</a>
+    <table>
+            {% for outreach in outreachs %}
+            <tr>
+                <td class="objectInfo">
+                    <details>
+                        <summary><b>Name</b>: {{ outreach.name }}</summary>
+                        <b>location:</b> {{ outreach.location }} <br />
+                        <b>date:</b> {{ outreach.date }} <br />
+                        <b>description:</b> {{ outreach.description }}<br />
+                        <b>Presenters:</b> {{ outreach.people }}
+                    </details>
+                </td>
+                <td>
+                    {% if outreach.image %}<img class="profileImage" src="/coop{{ outreach.image.url }}" />{% endif %}
+                </td>
+                <td>
+                    <!-- <form method="POST" action="{% url 'upload_outreach' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="editFile" value="{{ outreach.name }}" /> -->
+                        <button type="submit">Edit</button>
+                    <!-- </form> -->
+                </td>
+                <td>
+                    <button id="delete{{ outreach.name }}" onclick="deleteObject('outreach', '{{outreach.name}}')">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "coop/base.html" %}
+
+{% block content %}
+<h3>Presentations</h3>
+{% for pres in presentations %}
+  <details>
+      <summary>Name: {{ pres.name }}</summary>
+      Author: {{ pres.author }}<br />
+      Summary: {{ pres.summary }}<br />
+      Level: {{ pres.level }}<br />
+      Topics: {{ pres.topics }}<br />
+      File(s):{% for file in pres.files %}<a href="/coop/download/{{file|urlencode}}" download="{{file}}">download</a>{% endfor %}
+  </details>
+{% endfor %}
+{% endblock %}

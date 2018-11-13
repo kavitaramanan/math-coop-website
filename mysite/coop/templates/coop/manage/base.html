@@ -1,0 +1,22 @@
+{% extends "coop/base.html" %}
+
+{% block nav %}
+<ul class="manage_nav">
+    <li class="manage_nav"><a href="{% url 'index' %}">Main Site</a></li>
+    <li class="manage_nav"><a href="{% url 'manage' %}">Index Page</a></li>
+    <li class="manage_nav"><a href="{% url 'manage_pres' %}">Presentations</a></li>
+    <li class="manage_nav"><a href="{% url 'manage_outreach' %}">Outreach</a></li>
+    <li class="manage_nav"><a href="{% url 'manage_people' %}">People</a></li>
+    <li class="manage_nav"><a href="{% url 'manage_topics' %}">Topics</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+    <h3>Admin Actions</h3>
+    <a id="managePresA" href="{% url 'manage_pres' %}" class="uploadA">Manage Presentations</a> <br /><br />
+    <a id="managePresA" href="{% url 'manage_outreach' %}" class="uploadA">Manage Outreach</a> <br /><br />
+    <a id="managePresA" href="{% url 'manage_people' %}" class="uploadA">Manage People</a> <br /><br />
+    <a id="managePresA" href="{% url 'manage_topics' %}" class="uploadA">Manage Topics</a> <br /><br />
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

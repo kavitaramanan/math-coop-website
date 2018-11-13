@@ -1,0 +1,34 @@
+{% extends "coop/manage/base.html" %}
+
+{% block content %}
+    <h3>Admin Actions</h3>
+    <a id="addPersonA" href="{% url 'add_person' %}" class="uploadA">Add a New Person</a> <br /><br />
+    <table>
+            {% for person in people %}
+            <tr>
+                <td class="objectInfo">
+                    <ul>
+                        <li>
+                            <b>Name</b>: {{ person.name }}<br/>
+                            <b>Bio</b>: {{ person.bio }}<br/>
+                            <b>Outreach</b>: {{ person.outreach }}
+                        </li>
+                    </ul>
+                </td>
+                <td>
+                    {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
+                </td>
+                <td>
+                    <!-- <form method="POST" action="{% url 'add_person' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="editFile" value="{{ person.name }}" /> -->
+                        <button type="submit">Edit</button>
+                    <!-- </form> -->
+                </td>
+                <td>
+                    <button id="delete{{ person.name }}" onclick="deleteObject('person', '{{person.name}}')">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

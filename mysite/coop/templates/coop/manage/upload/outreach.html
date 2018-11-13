@@ -1,0 +1,11 @@
+{% extends "coop/manage/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h4>Upload a New Outreach</h4>
+    <form action="{% url 'upload_outreach' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+{% endblock %}

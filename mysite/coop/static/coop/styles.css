@@ -59,16 +59,20 @@ h1, h3, h4, p {
   margin-top: 0px;
 }
 
+#newTopicNameInput {
+  height: 24px;
+}
+
 .content-text {
   width: 94%;
 }
 
-hr {
+.hr {
   width: 90%;
 }
 
 .uploadA {
-  background-color: #67caea;
+  background-color: black;
   color: white;
   cursor: pointer;
   padding-left: 5px;
@@ -77,10 +81,19 @@ hr {
   padding-bottom: 3px;
   border-radius: 3px;
   text-decoration: none;
+  height: 24px;
+}
+
+.profileImage {
+  width: 300px;
+}
+
+.objectInfo {
+  min-width: 200px;
 }
 
 /* Navbar */
-ul.nav {
+ul.base_nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -89,11 +102,11 @@ ul.nav {
   background-image: linear-gradient(to right, #67caea, purple);
 }
 
-li.nav {
+li.base_nav {
   float: left;
 }
 
-li.nav a {
+li.base_nav a {
   display: block;
   color: white;
   text-align: center;
@@ -101,7 +114,33 @@ li.nav a {
   text-decoration: none;
 }
 /* Change the link color to #111 (black) on hover */
-li.nav a:hover {
+li.base_nav a:hover {
   /* background-color: #111; */
+  cursor: pointer;
+}
+
+/* Navbar */
+ul.manage_nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+}
+
+li.manage_nav {
+  float: left;
+}
+
+li.manage_nav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+/* Change the link color to #111 (black) on hover */
+li.manage_nav a:hover {
+  /* background-color: #222; */
   cursor: pointer;
 }

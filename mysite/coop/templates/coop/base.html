@@ -6,20 +6,25 @@
 <head>
   <title>Math Coop</title>
   <link rel="stylesheet" type="text/css" href="{% static 'coop/styles.css' %}">
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script type="text/javascript" src="{% static 'coop/main.js' %}"></script>
 </head>
 
 <body>
   <div id="container">
-    <ul class="nav">
-      <li class="nav"><a href="{% url 'index' %}">Home</a></li>
-      <li class="nav"><a href="https://www.youtube.com">Videos</a></li>
-      <li class="nav"><a href="{% url 'outreach' %}">Past Work</a></li>
+    {% block nav %}
+    <ul class="base_nav">
+      <li class="base_nav"><a href="{% url 'index' %}">Home</a></li>
+      <li class="base_nav"><a href="https://www.youtube.com">Videos</a></li>
+      <li class="base_nav"><a href="{% url 'people' %}">Who We Are</a></li>
+      <li class="base_nav"><a href="{% url 'outreach' %}">Past Work</a></li> 
     </ul>
+    {% endblock %}
     <div>
     <div id="header">
       <h1>Math Co-op</h1>
       <p>Brown University's Math Outreach Program</p>
-      <hr id="hr">
+      <hr class="hr">
     </div>
     <table>
       <tr>
@@ -27,27 +32,27 @@
           <div id="content">
             {% block content %}
               <h3>Presentations</h3>
-              <details>
-                <summary>Magical	Mathematics</summary>
-                - Author: David Lipshutz<br>
-                - Level: Ideal for children in elementary school, and may be adapted for higher grade levels.<br>
-                <a>Download</a>
-              </details>
-              <details>
-                <summary>Takeaway Games</summary>
-                <a href="#">Download</a><br>
-                - Author: Steven Kim<br>
-                - Level: Ideal for students 9 - 12, and may easily be adapted for studets in K - 8.
-              </details>
+              {% for pres in presentations %}
+                <details>
+                    <summary>Name: {{ pres.name }}</summary>
+                    Author: {{ pres.author }}<br />
+                    Summary: {{ pres.summary }}<br />
+                    Level: {{ pres.level }}<br />
+                    Topics: {{ pres.topics }}<br />
+                    File(s):{% for file in pres.files %}<a href="/coop/download/{{file|urlencode}}" download="{{file}}">download</a>{% endfor %}
+                </details>
+              {% endfor %}
             {% endblock %} 
           </div>
         </td>
         <td id="right">
+          {% block sidebar %}
           <h3>About</h3>
           <div class="content-text">
             <p>The Math CoOp, founded in January 2014, is a group of students, post-doctoral fellows and faculty who share a common passion for math outreach. We meet on a monthly basis to discuss mathematics and share ideas for presentations at all grade levels.</p>
           </div>
           <img id="picture-1" src="https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
+          {% endblock %}
         </td>
       </tr>
     </table>

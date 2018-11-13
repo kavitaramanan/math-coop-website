@@ -1,0 +1,23 @@
+{% extends "coop/manage/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h4>Upload a New Presentations</h4>
+    <form action="{% url 'upload_pres' %}" method="POST" enctype="multipart/form-data" id="uploadPresForm">
+        {% csrf_token %}
+        <label for="nameInput">Name: </label><input id="nameInput" name="nameInput" type="text" /><br/><br/>
+        <label for="authorInput">Author: </label><input id="authorInput" name="authorInput" type="text" /><br/><br/>
+        <label for="levelInput">Level: </label><input id="levelInput" name="levelInput" type="text" /><br/><br/>
+        <label for="summaryInput">Summary: </label><input id="summaryInput" name="summaryInput" type="textarea" /><br/><br/>
+        <label for="fileInput0">Add Files: </label><br /><br /><input id="fileInput0" name="fileInput"
+            type="file" accept="application/vnd.ms-powerpoint, application/pdf" multiple="multiple"/><br/><br/>
+        <label for="addFileInput"><button id="addFileInput" type="button" onclick="appendFileInput(0)">Add Another File</button><br /><br />
+        Topics:
+        <br>
+        <label for="topicInput">Topics: </label> 
+        <input id="topicinput" name="topicInput" type="text" />
+        <br />
+        <!-- TODO: add topic functionality (add new topics)-->
+        <button type="submit">Upload</button>
+    </form>
+{% endblock %}

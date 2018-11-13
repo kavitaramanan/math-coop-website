@@ -1,0 +1,29 @@
+{% extends "coop/manage/base.html" %}
+
+{% block content %}
+    <h3>Admin Actions</h3>
+    <a id="uploadPresA" href="{% url 'upload_pres' %}" class="uploadA">Upload a New Presentation</a> <br /><br />
+    <br>
+    <br>
+    <table>
+        {% for pres in presentations %}
+        <tr>
+            <td>
+                <details>
+                    <summary>Name: {{ pres.name }}</summary>
+                    Author: {{ pres.author }}<br>
+                    Summary: {{ pres.summary }}<br>
+                    Level: {{ pres.level }}<br>
+                    Topics: {{ pres.topics }}
+                </details>
+            </td>
+            <td>
+                <a href="{% url 'edit_pres' %}?pres={{ pres.name }}" >Edit</button>
+            </td>
+            <td>
+                <button id="delete{{ pres.name }}" onclick="deleteObject('pres', '{{pres.name}}')">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
