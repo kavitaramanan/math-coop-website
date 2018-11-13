@@ -26,6 +26,10 @@ def people(request):
     people = Person.objects.all()
     return render(request, 'coop/people.html', {"people": people})
 
+def pres(request):
+    pres = Presentation.objects.all()
+    return render(request, 'coop/pres.html', {"presentations": pres})
+
 def outreach(request):
     context = {"outreach_history": Outreach.objects.all()}
     return render(request, 'coop/outreach.html', context)

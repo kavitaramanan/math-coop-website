@@ -1,14 +1,27 @@
 {% extends "coop/base.html" %}
 
-{% block content %}
-    {% for outreach in outreach_history %}
-        <h4>{{ outreach.name }}</h4>
-        <p>
-            Location: {{ outreach.location }}<br/>
-            Date: {{ outreach.date }}<br/>
-            Description: {{ outreach.description }}
-        </p>
-        <br>
-    {% endfor %}
+{% block nav %}
+  <ul class="base_nav">
+    <li class="base_nav"><a href="{% url 'people' %}">Who We Are</a></li>
+    <li class="base_nav selected"><a href="{% url 'outreach' %}">Past Work</a></li> 
+    <li class="base_nav"><a href="{% url 'pres' %}">Presentations</a></li> 
+    <li class="base_nav"><a href="https://www.youtube.com">YouTube Page</a></li>
+    <li class="base_nav" id="logo" style="float: right;">
+      <a href="{% url 'index' %}">
+        <h4 id="logoh">Math Co-op</h4>
+        <p id="logop">Brown University's Math Outreach Program</p>
+      </a></li>
+  </ul>
+{% endblock %}
 
+{% block content %}
+  {% for outreach in outreach_history %}
+    <h4>{{ outreach.name }}</h4>
+      <p>
+        Location: {{ outreach.location }}<br/>
+        Date: {{ outreach.date }}<br/>
+        Description: {{ outreach.description }}
+      </p>
+    <br>
+  {% endfor %}
 {% endblock %}

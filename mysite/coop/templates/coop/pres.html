@@ -1,15 +1,29 @@
 {% extends "coop/base.html" %}
 
+{% block nav %}
+  <ul class="base_nav">
+    <li class="base_nav"><a href="{% url 'people' %}">Who We Are</a></li>
+    <li class="base_nav"><a href="{% url 'outreach' %}">Past Work</a></li> 
+    <li class="base_nav selected"><a href="{% url 'pres' %}">Presentations</a></li> 
+    <li class="base_nav"><a href="https://www.youtube.com">YouTube Page</a></li>
+    <li class="base_nav" id="logo" style="float: right;">
+      <a href="{% url 'index' %}">
+        <h4 id="logoh">Math Co-op</h4>
+        <p id="logop">Brown University's Math Outreach Program</p>
+      </a>
+    </li>
+  </ul>
+{% endblock %}
+
 {% block content %}
-<h3>Presentations</h3>
 {% for pres in presentations %}
-  <details>
-      <summary>Name: {{ pres.name }}</summary>
-      Author: {{ pres.author }}<br />
-      Summary: {{ pres.summary }}<br />
-      Level: {{ pres.level }}<br />
-      Topics: {{ pres.topics }}<br />
-      File(s):{% for file in pres.files %}<a href="/coop/download/{{file|urlencode}}" download="{{file}}">download</a>{% endfor %}
-  </details>
+<h4>Name: {{ pres.name }}</h4>
+<p>
+  Author: {{ pres.author }}<br />
+  Summary: {{ pres.summary }}<br />
+  Level: {{ pres.level }}<br />
+  Topics: {{ pres.topics }}<br />
+  File(s):{% for file in pres.files %}<a href="/coop/download/{{file|urlencode}}" download="{{file}}">download</a>{% endfor %}
+</p>
 {% endfor %}
 {% endblock %}

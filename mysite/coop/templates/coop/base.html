@@ -14,37 +14,32 @@
   <div id="container">
     {% block nav %}
     <ul class="base_nav">
-      <li class="base_nav"><a href="{% url 'index' %}">Home</a></li>
-      <li class="base_nav"><a href="https://www.youtube.com">Videos</a></li>
       <li class="base_nav"><a href="{% url 'people' %}">Who We Are</a></li>
       <li class="base_nav"><a href="{% url 'outreach' %}">Past Work</a></li> 
+      <li class="base_nav"><a href="{% url 'pres' %}">Presentations</a></li> 
+      <li class="base_nav"><a href="https://www.youtube.com">YouTube Page</a></li>
+      <li class="base_nav" id="logo" style="float: right;">
+        <a href="{% url 'index' %}">
+          <h4 id="logoh">Math Co-op</h4>
+          <p id="logop">Brown University's Math Outreach Program</p>
+        </a>
+      </li>
     </ul>
     {% endblock %}
     <div>
     <div id="header">
-      <h1>Math Co-op</h1>
-      <p>Brown University's Math Outreach Program</p>
-      <hr class="hr">
+      <!-- <hr class="hr"> -->
+    <!-- <table>
+      <tr> -->
+        <!-- <td id="left"> -->
+      <div id="content">
+        {% block content %}
+          {% for pres in presentations %}
+          {% endfor %}
+        {% endblock %} 
+      </div>
     </div>
-    <table>
-      <tr>
-        <td id="left">
-          <div id="content">
-            {% block content %}
-              <h3>Presentations</h3>
-              {% for pres in presentations %}
-                <details>
-                    <summary>Name: {{ pres.name }}</summary>
-                    Author: {{ pres.author }}<br />
-                    Summary: {{ pres.summary }}<br />
-                    Level: {{ pres.level }}<br />
-                    Topics: {{ pres.topics }}<br />
-                    File(s):{% for file in pres.files %}<a href="/coop/download/{{file|urlencode}}" download="{{file}}">download</a>{% endfor %}
-                </details>
-              {% endfor %}
-            {% endblock %} 
-          </div>
-        </td>
+        <!-- </td>
         <td id="right">
           {% block sidebar %}
           <h3>About</h3>
@@ -53,9 +48,9 @@
           </div>
           <img id="picture-1" src="https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
           {% endblock %}
-        </td>
-      </tr>
-    </table>
+        </td> -->
+      <!-- </tr>
+    </table> -->
   </div>
 </body>
 
