@@ -1,0 +1,15 @@
+{% extends "coop/manage/base.html" %}
+{% load static %}
+
+{% block content %}
+    <h4>Upload a New Presentations</h4>
+    <form action="{% url 'edit_person' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="person" value="{{ person.name }}"/>
+
+        <label for="nameInput">Name: </label><input id="nameInput" name="nameInput" type="text" value="{{ person.name }}"/><br/><br/>
+        <label for="image">Replace Image: </label><input id="imageInput" name="imageInput" type="file" accept=".jpg, .jpeg, .png"/><br/><br/>
+        <label for="bioInput">Bio: </label><input id="bioInput" name="bioInput" type="textarea" value="{{ person.bio }}"/><br/><br/>
+        <button type="submit">Commit Edits</button>
+    </form>
+{% endblock %}

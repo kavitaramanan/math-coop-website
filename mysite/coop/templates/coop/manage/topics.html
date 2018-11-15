@@ -12,7 +12,7 @@
                 -->
                 <div>
                     <b>Name</b>: {{ topic.name }}
-                    <button type="submit">Edit</button>
+                    <a onclick="editTopic()">Edit</a>
                     <button id="delete{{ topic.name }}" onclick="deleteObject('topic', '{{topic.name}}')">Delete</button>
                 </div>
             </li>

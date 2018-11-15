@@ -55,3 +55,7 @@ function appendFileInput(i) {
     form.insertBefore(br1, label);
     form.insertBefore(br2, label);
 }
+
+function editTopic(e) {
+    
+}

@@ -8,6 +8,13 @@ import logging
 logger = logging.getLogger(__name__)
 # Create your views here.
 def index(request):
+    return render(request, 'coop/base.html')
+
+def people(request):
+    people = Person.objects.all()
+    return render(request, 'coop/people.html', {"people": people})
+
+def pres(request):    
     context = {"presentations": []} 
     presentations = Presentation.objects.all()
     for pres in presentations:
@@ -20,15 +27,7 @@ def index(request):
             "topics": get_topics(pres)
         })
     print(context)
-    return render(request, 'coop/base.html', context)
-
-def people(request):
-    people = Person.objects.all()
-    return render(request, 'coop/people.html', {"people": people})
-
-def pres(request):
-    pres = Presentation.objects.all()
-    return render(request, 'coop/pres.html', {"presentations": pres})
+    return render(request, 'coop/pres.html', context)
 
 def outreach(request):
     context = {"outreach_history": Outreach.objects.all()}
@@ -192,6 +191,35 @@ def add_person(request):
         if form.is_valid():
             form.save()
         return redirect(reverse('manage_people'))
+
+def edit_person(request):
+    if request.method == "GET":
+        person = request.GET.get("person")
+        person = Person.objects.get(name=person)
+        return render(request, "coop/manage/edit/person.html", {"person": person})
+
+    elif request.method == "POST":
+        person = request.POST.get("person")
+        person = Person.objects.filter(name=person)[0]
+        
+        # update attributes
+        attrInputs = ["bioInput", "nameInput"]
+        attrs = ["bio", "name"]
+        print(request.POST)
+        for i, attrInput in enumerate(attrInputs):
+            new_value = request.POST.get(attrInput, default="")
+            print(attrs[i], new_value)
+            setattr(person, attrs[i], new_value)
+        
+        # replace w/ new images
+        im = request.FILES.get("imageInput")
+        if im:
+            setattr(person, 'image', im)
+        person.save()
+        
+
+        return redirect(reverse("manage_people"))
+
 
 def manage_topics(request):
     context = {"topics": []}   

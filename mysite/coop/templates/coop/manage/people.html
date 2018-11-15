@@ -19,11 +19,7 @@
                     {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
                 </td>
                 <td>
-                    <!-- <form method="POST" action="{% url 'add_person' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="editFile" value="{{ person.name }}" /> -->
-                        <button type="submit">Edit</button>
-                    <!-- </form> -->
+                    <a href="{% url 'edit_person' %}?person={{ person.name }}" >Edit</button>
                 </td>
                 <td>
                     <button id="delete{{ person.name }}" onclick="deleteObject('person', '{{person.name}}')">Delete</button>
