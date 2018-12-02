@@ -170,6 +170,29 @@ def upload_outreach(request):
             print("invalid" + str(form))
         return redirect(reverse('manage_outreach'))
 
+def edit_outreach(request):
+    if request.method == "GET":
+        outreach = request.GET.get("outreach")
+        outreach = Outreach.objects.get(name=outreach)
+        return render(request, "coop/manage/edit/outreach.html", {"outreach": outreach})
+
+    elif request.method == "POST":
+        outreach = request.POST.get("outreach")
+        outreach = Outreach.objects.filter(name=outreach)[0]
+        
+        # update attributes
+        attrInputs = ["locationInput", "dateInput", "descriptionInput",
+                      "nameInput"]
+        attrs = ["location", "date", "description", "name"]
+        print(request.POST)
+        for i, attrInput in enumerate(attrInputs):
+            new_value = request.POST.get(attrInput, default="")
+            print(attrs[i], new_value)
+            setattr(outreach, attrs[i], new_value)        
+
+        outreach.save()
+        return redirect(reverse("manage_outreach"))
+
 def manage_people(request):
     context = {"people": []} 
     people = Person.objects.all()

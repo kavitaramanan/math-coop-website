@@ -20,6 +20,7 @@ urlpatterns = [
     path('manage/upload/topic', views.upload_topic, name='upload_topic'),
     path('manage/edit/pres/', views.edit_pres, name='edit_pres'),
     path('manage/edit/person/', views.edit_person, name='edit_person'),
+    path('manage/edit/outreach/', views.edit_outreach, name='edit_outreach'),
     # path('manage/edit/outreach', views.edit_outreach, name='edit_outreach'),
     # path('manage/edit/person', views.edit_person, name='edit_person'),
     # path('manage/edit/topic', views.edit_topic, name='edit_topic'),

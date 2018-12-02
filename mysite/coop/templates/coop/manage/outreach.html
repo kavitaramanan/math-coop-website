@@ -19,11 +19,7 @@
                     {% if outreach.image %}<img class="profileImage" src="/coop{{ outreach.image.url }}" />{% endif %}
                 </td>
                 <td>
-                    <!-- <form method="POST" action="{% url 'upload_outreach' %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="editFile" value="{{ outreach.name }}" /> -->
-                        <button type="submit">Edit</button>
-                    <!-- </form> -->
+                    <a href="{% url 'edit_outreach' %}?outreach={{ outreach.name }}">Edit</button>
                 </td>
                 <td>
                     <button id="delete{{ outreach.name }}" onclick="deleteObject('outreach', '{{outreach.name}}')">Delete</button>
