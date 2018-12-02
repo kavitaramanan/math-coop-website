@@ -21,7 +21,3 @@ admin.site.register(Person, PersonAdmin)
 class OutreachAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Outreach, OutreachAdmin)
-
-# class PresentationTopicAdmin(admin.ModelAdmin):
-#     pass
-# admin.site.register(PresentationTopic, PresentationTopicAdmin)
