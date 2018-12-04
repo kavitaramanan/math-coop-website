@@ -25,5 +25,5 @@ urlpatterns = [
     # path('manage/edit/person', views.edit_person, name='edit_person'),
     # path('manage/edit/topic', views.edit_topic, name='edit_topic'),
     # path('delete', views.delete, name='delete'),
-    path(r'download/ppts/(file_name>.+)', views.download, name="download"),
+    path('download/', views.download, name="download"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

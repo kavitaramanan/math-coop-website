@@ -1,8 +1,10 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse
 from .models import Presentation, Topic, Outreach, Person, File
 from .forms import OutreachForm, PersonForm
+from django.conf import settings
 from PIL import Image
 
+import os
 import logging
 
 logger = logging.getLogger(__name__)
@@ -34,15 +36,16 @@ def outreach(request):
     return render(request, 'coop/outreach.html', context)
 
 
-def download(request, file_name):
-    file_path = settings.MEDIA_ROOT +'/ppts'+ file_name
-    file_wrapper = FileWrapper(file(file_path,'rb'))
-    file_mimetype = mimetypes.guess_type(file_path)
-    response = HttpResponse(file_wrapper, content_type=file_mimetype )
-    response['X-Sendfile'] = file_path
-    response['Content-Length'] = os.stat(file_path).st_size
-    response['Content-Disposition'] = 'attachment; filename=%s/' % smart_str(file_name) 
-    return response
+def download(request):
+    file_name = request.GET.get("file_name")
+    file_path = settings.MEDIA_ROOT +'\\'+ file_name
+    print("here")
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            print("opened successfully")
+            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            return response
 
 def get_topics(pres):
     topics = pres.topics.all()

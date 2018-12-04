@@ -23,7 +23,7 @@
   Summary: {{ pres.summary }}<br />
   Level: {{ pres.level }}<br />
   Topics: {{ pres.topics }}<br />
-  File(s):{% for file in pres.files %}<a href="/coop/download/{{file|urlencode}}" download="{{file}}">download</a>{% endfor %}
+  File(s):{% for file in pres.files %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/download/?file_name={{file|urlencode}}" download="{{file}}">{{file}}</a>{% endfor %}
 </p>
 {% endfor %}
 {% endblock %}
