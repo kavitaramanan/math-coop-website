@@ -17,7 +17,7 @@
 
 {% block content %}
   {% for person in people %}
-  <h3>{{ person.name }}</h3>
+  <h2 id="{{person.name}}">{{ person.name }}</h2>
   {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
   <p>{{ person.bio }}</p>
   {% endfor %}

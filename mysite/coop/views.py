@@ -32,7 +32,16 @@ def pres(request):
     return render(request, 'coop/pres.html', context)
 
 def outreach(request):
-    context = {"outreach_history": Outreach.objects.all()}
+    context = {"outreach_history": []} 
+    outreach = Outreach.objects.all()
+    for out in outreach:
+        context["outreach_history"].append({
+            "name": out.name,
+            "location": out.location,
+            "date": out.date,
+            "description": out.description,
+            "people": get_people(out)
+        })
     return render(request, 'coop/outreach.html', context)
 
 
@@ -55,31 +64,9 @@ def get_topics(pres):
 
     return response[:-2] # remove trailing comma
 
-def get_outreach(person):
-    person_outreachs = list(PersonOutreach.objects.filter(person=person.pk))
-    try:
-        response = [person_outreachs.pop().topic]
-    except:
-        response = ""
-
-    if response:
-        for pair in person_outreachs:
-            response.append(pair.outreach)
-    
-    return response
-
 def get_people(outreach):
-    person_outreachs = list(PersonOutreach.objects.filter(outreach=outreach.pk))
-    try:
-        response = [person_outreachs.pop().topic]
-    except:
-        response = ""
-
-    if response:
-        for pair in person_outreachs:
-            response.append(pair.outreach)
-    
-    return response
+    people = outreach.people.all()
+    return people # remove trailing comma
 
 def get_files(pres):
     files = list(File.objects.filter(pres=pres.pk))

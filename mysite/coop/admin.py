@@ -19,5 +19,5 @@ class PersonAdmin(admin.ModelAdmin):
 admin.site.register(Person, PersonAdmin)
 
 class OutreachAdmin(admin.ModelAdmin):
-    pass
+    filter_horizontal = ("people",) 
 admin.site.register(Outreach, OutreachAdmin)
