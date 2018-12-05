@@ -47,7 +47,7 @@ def outreach(request):
 
 def download(request):
     file_name = request.GET.get("file_name")
-    file_path = settings.MEDIA_ROOT +'\\'+ file_name
+    file_path = settings.MEDIA_ROOT +'/'+ file_name
     print("here")
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
@@ -55,6 +55,7 @@ def download(request):
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
             return response
+    
 
 def get_topics(pres):
     topics = pres.topics.all()
