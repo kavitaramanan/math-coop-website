@@ -27,11 +27,9 @@
     </ul>
     {% endblock %}
     <div>
+
     <div id="header">
       <!-- <hr class="hr"> -->
-    <!-- <table>
-      <tr> -->
-        <!-- <td id="left"> -->
       <div id="content">
         {% block content %}
         <div style="float: left; width: 50%;">
@@ -43,7 +41,9 @@
           <li>Suspendisse pulvinar venenatis elementum. Suspendisse eu scelerisque magna.</li>
           <li>Fusce cursus eros non leo consectetur tincidunt. Nullam sit amet ullamcorper turpis.</li>
         </ul>
+
         </div>
+        <!-- Images -->
         <div style="float: right; margin-right: 20%; width:25%;">
           <img style="display: block; width: 100%;" src="{% static 'coop/wave.gif' %}" />
           <img style="display: block; width: 100%; padding-top: 25px;" src="{% static 'coop/mandelbrot.jpg' %}" />
@@ -51,18 +51,6 @@
         {% endblock %} 
       </div>
     </div>
-        <!-- </td>
-        <td id="right">
-          {% block sidebar %}
-          <h3>About</h3>
-          <div class="content-text">
-            <p>The Math CoOp, founded in January 2014, is a group of students, post-doctoral fellows and faculty who share a common passion for math outreach. We meet on a monthly basis to discuss mathematics and share ideas for presentations at all grade levels.</p>
-          </div>
-          <img id="picture-1" src="https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"/>
-          {% endblock %}
-        </td> -->
-      <!-- </tr>
-    </table> -->
   </div>
 </body>
 
