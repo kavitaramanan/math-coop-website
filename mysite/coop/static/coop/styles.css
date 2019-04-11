@@ -66,6 +66,8 @@ h1, h2, h3, h4, p, li {
 }
 
 #logo {
+  text-align: center;
+  margin-left: auto;
   padding-right: 25px;
   margin-top: 0px;
 }
@@ -110,6 +112,10 @@ h1, h2, h3, h4, p, li {
 
 /* Navbar */
 ul.base_nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-shrink: 1;
   list-style-type: none;
   margin: 0px;
   font-size: 22px;
@@ -121,7 +127,7 @@ ul.base_nav {
 
 li.base_nav {
   float: left;
-  text-align: center;
+  text-align: left;
   margin-top: 30px;
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
