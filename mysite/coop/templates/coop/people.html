@@ -1,24 +1,31 @@
-{% extends "coop/base.html" %}
+{% extends "coop/base2.html" %}
 
 {% block nav %}
-  <ul class="base_nav">
-    <li class="base_nav selected"><a href="{% url 'people' %}">Who We Are</a></li>
-    <li class="base_nav"><a href="{% url 'outreach' %}">Past Work</a></li> 
-    <li class="base_nav"><a href="{% url 'pres' %}">Presentations</a></li> 
-    <li class="base_nav"><a href="https://www.youtube.com">YouTube Page</a></li>
-    <li class="base_nav" id="logo" style="float: right;">
-      <a href="{% url 'index' %}">
-        <h4 id="logoh">Math Co-op</h4>
-        <p id="logop">Brown University's Math Outreach Program</p>
-      </a>
-    </li>
-  </ul>
+  <div class="navigation-bar">
+    <a href="{% url 'people' %}" class="nav-link w--current">People</a>
+    <a href="{% url 'outreach' %}" class="nav-link">Outreach</a></div>
+    <a href="{% url 'pres' %}" class="nav-link">Presentations</a></div>
+  </div>         
+{% endblock %}
+
+{% block img %}
 {% endblock %}
 
 {% block content %}
   {% for person in people %}
-  <h2 id="{{person.name}}">{{ person.name }}</h2>
-  {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
-  <p>{{ person.bio }}</p>
+    <table>
+      <tr>
+        <h1 id="{{ person.name }}" class="info-page-header blog-headline">{{ person.name }}</h1>
+      </tr>
+      <tr>
+        <td style="width: 50%">
+          {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
+        </td>
+        <td style="width: 50%; padding-left: 5%">
+          {{ person.bio }}
+        </td>
+      </tr>
+    </table>
+    <hr>
   {% endfor %}
 {% endblock %}

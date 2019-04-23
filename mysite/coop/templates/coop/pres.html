@@ -1,29 +1,32 @@
-{% extends "coop/base.html" %}
+{% extends "coop/base2.html" %}
 
 {% block nav %}
-  <ul class="base_nav">
-    <li class="base_nav"><a href="{% url 'people' %}">Who We Are</a></li>
-    <li class="base_nav"><a href="{% url 'outreach' %}">Past Work</a></li> 
-    <li class="base_nav selected"><a href="{% url 'pres' %}">Presentations</a></li> 
-    <li class="base_nav"><a href="https://www.youtube.com">YouTube Page</a></li>
-    <li class="base_nav" id="logo" style="float: right;">
-      <a href="{% url 'index' %}">
-        <h4 id="logoh">Math Co-op</h4>
-        <p id="logop">Brown University's Math Outreach Program</p>
-      </a>
-    </li>
-  </ul>
+  <div class="navigation-bar">
+    <a href="{% url 'people' %}" class="nav-link">People</a>
+    <a href="{% url 'outreach' %}" class="nav-link">Outreach</a></div>
+    <a href="{% url 'pres' %}" class="nav-link w--current">Presentations</a></div>
+  </div>         
+{% endblock %}
+
+{% block img %}
 {% endblock %}
 
 {% block content %}
-{% for pres in presentations %}
-<h4>Name: {{ pres.name }}</h4>
-<p>
-  Author: {{ pres.author }}<br />
-  Summary: {{ pres.summary }}<br />
-  Level: {{ pres.level }}<br />
-  Topics: {{ pres.topics }}<br />
-  File(s):{% for file in pres.files %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/download/?file_name={{file|urlencode}}" download="{{file}}">{{file}}</a>{% endfor %}
-</p>
-{% endfor %}
+  {% for pres in presentations %}
+    <table>
+      <tr>
+        <h1 id="{{ pres.name }}" class="info-page-header blog-headline">{{ pres.name }}</h1>
+      </tr>
+      <tr>
+        <td>
+          Author: {{ pres.author }}<br />
+          Summary: {{ pres.summary }}<br />
+          Level: {{ pres.level }}<br />
+          Topics: {{ pres.topics }}<br />
+          File(s):{% for file in pres.files %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/download/?file_name={{file|urlencode}}" class="colorless" download="{{file}}">{{file}}</a>{% endfor %}
+        </td>
+      </tr>
+    </table>
+    <hr>
+  {% endfor %}
 {% endblock %}

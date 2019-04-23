@@ -1,27 +1,31 @@
-{% extends "coop/base.html" %}
+{% extends "coop/base2.html" %}
 
 {% block nav %}
-  <ul class="base_nav">
-    <li class="base_nav"><a href="{% url 'people' %}">Who We Are</a></li>
-    <li class="base_nav selected"><a href="{% url 'outreach' %}">Past Work</a></li> 
-    <li class="base_nav"><a href="{% url 'pres' %}">Presentations</a></li> 
-    <li class="base_nav"><a href="https://www.youtube.com">YouTube Page</a></li>
-    <li class="base_nav" id="logo" style="float: right;">
-      <a href="{% url 'index' %}">
-        <h4 id="logoh">Math Co-op</h4>
-        <p id="logop">Brown University's Math Outreach Program</p>
-      </a></li>
-  </ul>
+  <div class="navigation-bar">
+    <a href="{% url 'people' %}" class="nav-link">People</a>
+    <a href="{% url 'outreach' %}" class="nav-link w--current">Outreach</a></div>
+    <a href="{% url 'pres' %}" class="nav-link">Presentations</a></div>
+  </div>         
 {% endblock %}
+
+{% block img %}
+{% endblock %}
+
 {% block content %}
   {% for outreach in outreach_history %}
-    <h4>{{ outreach.name }}</h4>
-      <p>
+    <table>
+      <tr>
+        <h1 class="info-page-header blog-headline">{{ outreach.name }}</h1>
+      </tr>
+      <tr>
+        <td style="width: 50%">
         Location: {{ outreach.location }}<br/>
         Date: {{ outreach.date }}<br/>
         Description: {{ outreach.description }} <br/>
-        Presenter(s):{% for person in outreach.people %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/people#{{person.name|urlencode}}">{{ person.name }}</a>{% endfor %}        
-      </p>
-    <br>
+        Presenter(s): {% for person in outreach.people %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/people#{{person.name|urlencode}}" class="colorless">{{ person.name }}</a>{% endfor %}        
+        </td>
+      </tr>
+    </table>
+    <hr>
   {% endfor %}
 {% endblock %}

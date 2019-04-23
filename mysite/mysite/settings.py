@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["tottaway.pythonanywhere.com", "127.0.0.1"]
 
 INSTALLED_APPS = [
     'coop',
+#    'sendemail.apps.Sendemailconfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,3 +122,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/ppts/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'ppts')
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

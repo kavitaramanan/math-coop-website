@@ -110,6 +110,14 @@ h1, h2, h3, h4, p, li {
   min-width: 200px;
 }
 
+.info-page-header{
+  margin-top: 30px;
+}
+
+.colorless{
+  color: #8f8f8f;
+}
+
 /* Navbar */
 ul.base_nav {
   display: flex;

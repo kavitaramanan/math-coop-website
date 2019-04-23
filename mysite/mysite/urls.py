@@ -15,8 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponseRedirect
+
+import re
 
 urlpatterns = [
+    path(r'', lambda r: HttpResponseRedirect('coop/')),
     path('coop/', include('coop.urls')),
     path('admin/', admin.site.urls),
 ]

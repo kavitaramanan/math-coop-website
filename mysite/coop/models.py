@@ -17,6 +17,7 @@ class Presentation(models.Model):
     def __str__(self):
         return self.name
 
+
 class File(models.Model):
     pres = models.ForeignKey(Presentation, on_delete=models.CASCADE)
     f = models.FileField(upload_to='')

@@ -1,7 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse
 from .models import Presentation, Topic, Outreach, Person, File
-from .forms import OutreachForm, PersonForm
+from .forms import OutreachForm, PersonForm, ContactForm
 from django.conf import settings
+from django.core.mail import send_mail, BadHeaderError
 from PIL import Image
 
 import os
@@ -10,7 +11,7 @@ import logging
 logger = logging.getLogger(__name__)
 # Create your views here.
 def index(request):
-    return render(request, 'coop/base.html')
+    return render(request, 'coop/base2.html')
 
 def people(request):
     people = Person.objects.all()
@@ -55,6 +56,23 @@ def download(request):
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
             return response
+
+def contact(request):
+    """Page to allow users to contact the mathcoop"""
+    if request.method == 'GET':
+        form = ContactForm()
+    else:
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            from_email = form.cleaned_data['from_email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, message, from_email, ['tottaway123@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return redirect('index')
+    return render(request, 'coop/contact.html', {'form': form})
     
 
 def get_topics(pres):
