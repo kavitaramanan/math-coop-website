@@ -21,9 +21,11 @@
         <td style="width: 50%">
           {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
         </td>
+        {% if person.bio %}
         <td style="width: 50%; padding-left: 5%">
-          {{ person.bio }}
+            {{ person.bio }}
         </td>
+        {% endif %}
       </tr>
     </table>
     <hr>

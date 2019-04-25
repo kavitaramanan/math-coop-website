@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse
-from .models import Presentation, Topic, Outreach, Person, File
+from .models import Presentation, Outreach, Person, File
 from .forms import OutreachForm, PersonForm, ContactForm
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
@@ -7,6 +7,7 @@ from PIL import Image
 
 import os
 import logging
+from datetime import date
 
 logger = logging.getLogger(__name__)
 # Create your views here.
@@ -27,7 +28,7 @@ def pres(request):
             "author": pres.author,
             "level": pres.level,
             "files": get_files(pres),
-            "topics": get_topics(pres)
+            "topics": pres.topics
         })
     print(context)
     return render(request, 'coop/pres.html', context)
@@ -43,6 +44,7 @@ def outreach(request):
             "description": out.description,
             "people": get_people(out)
         })
+    context["outreach_history"] = sorted(context["outreach_history"], key=lambda k: (k['date'] if k['date'] else date.min), reverse=True)
     return render(request, 'coop/outreach.html', context)
 
 
@@ -75,13 +77,13 @@ def contact(request):
     return render(request, 'coop/contact.html', {'form': form})
     
 
-def get_topics(pres):
-    topics = pres.topics.all()
-    response = ""
-    for topic in topics:
-        response += topic.name + ", "
-
-    return response[:-2] # remove trailing comma
+#def get_topics(pres):
+#    topics = pres.topics.all()
+#    response = ""
+#    for topic in topics:
+#        response += topic.name + ", "
+#
+#    return response[:-2] # remove trailing comma
 
 def get_people(outreach):
     people = outreach.people.all()
@@ -90,12 +92,12 @@ def get_people(outreach):
 def get_files(pres):
     files = list(File.objects.filter(pres=pres.pk))
     try:
-        response = [files.pop().f.name]
+        response = [files.pop()]
     except:
         response = ""
 
     if response:
         for f in files:
-            response.append(f.f.name)
+            response.append(f)
     
     return response

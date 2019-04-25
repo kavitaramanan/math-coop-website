@@ -19,11 +19,11 @@
       </tr>
       <tr>
         <td>
-          Author: {{ pres.author }}<br />
-          Summary: {{ pres.summary }}<br />
-          Level: {{ pres.level }}<br />
-          Topics: {{ pres.topics }}<br />
-          File(s):{% for file in pres.files %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/download/?file_name={{file|urlencode}}" class="colorless" download="{{file}}">{{file}}</a>{% endfor %}
+            {% if pres.author %} <b>Author</b>: {{ pres.author }} {% endif %}
+            {% if pres.summary %}<br /> <b>Summary</b>: {{ pres.summary }} {% endif %}
+            {% if pres.level %}<br /> <b>Level</b>: {{ pres.level }} {% endif %}
+            {% if pres.topics %}<br /> <b>Topics</b>: {{ pres.topics }} {% endif %}
+            <br /> File(s):{% for file in pres.files %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/download/?file_name={{file.f.name|urlencode}}" class="colorless" download="{{file.f.name}}">{{file}}</a>{% endfor %}
         </td>
       </tr>
     </table>
