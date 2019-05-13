@@ -15,8 +15,11 @@ def index(request):
     return render(request, 'coop/base2.html')
 
 def people(request):
-    people = Person.objects.all()
-    return render(request, 'coop/people.html', {"people": people})
+    faculty = Person.objects.all().filter(status='faculty')
+    members = Person.objects.all().filter(status='member')
+    alumni = Person.objects.all().filter(status='alumni')
+    return render(request, 'coop/people.html', 
+        {'faculty': faculty, 'members': members, 'alumni': alumni})
 
 def pres(request):    
     context = {"presentations": []} 
@@ -30,7 +33,6 @@ def pres(request):
             "files": get_files(pres),
             "topics": pres.topics
         })
-    print(context)
     return render(request, 'coop/pres.html', context)
 
 def outreach(request):
@@ -47,14 +49,11 @@ def outreach(request):
     context["outreach_history"] = sorted(context["outreach_history"], key=lambda k: (k['date'] if k['date'] else date.min), reverse=True)
     return render(request, 'coop/outreach.html', context)
 
-
 def download(request):
     file_name = request.GET.get("file_name")
     file_path = settings.MEDIA_ROOT +'/'+ file_name
-    print("here")
     if os.path.exists(file_path):
         with open(file_path, 'rb') as fh:
-            print("opened successfully")
             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
             return response

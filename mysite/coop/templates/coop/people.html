@@ -3,7 +3,7 @@
 {% block nav %}
   <div class="navigation-bar">
     <a href="{% url 'people' %}" class="nav-link w--current">People</a>
-    <a href="{% url 'outreach' %}" class="nav-link">Outreach</a></div>
+    <a href="{% url 'outreach' %}" class="nav-link">Outreach Events</a></div>
     <a href="{% url 'pres' %}" class="nav-link">Presentations</a></div>
   </div>         
 {% endblock %}
@@ -12,22 +12,63 @@
 {% endblock %}
 
 {% block content %}
-  {% for person in people %}
-    <table>
-      <tr>
-        <h1 id="{{ person.name }}" class="info-page-header blog-headline">{{ person.name }}</h1>
-      </tr>
-      <tr>
-        <td style="width: 50%">
-          {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
-        </td>
-        {% if person.bio %}
-        <td style="width: 50%; padding-left: 5%">
-            {{ person.bio }}
-        </td>
-        {% endif %}
-      </tr>
-    </table>
+  <h1 class="first-section-header"><b>Faculty Members</b></h1>
+  {% for person in faculty %}
+  <table>
+  <tr>
+    <h1 id="{{ person.name }}" class="info-page-header blog-headline">{{ person.name }}</h1>
+  </tr>
+  <tr>
+    <td style="width: 50%">
+      {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
+    </td>
+    {% if person.bio %}
+    <td style="width: 50%; padding-left: 5%">
+        {{ person.bio }}
+    </td>
+    {% endif %}
+  </tr>
     <hr>
+  </table>
+  {% endfor %}
+
+  <h1 class="section-header"><b>Current Members</b></h1>
+  {% for person in members %}
+  <table>
+  <tr>
+    <h1 id="{{ person.name }}" class="info-page-header blog-headline">{{ person.name }}</h1>
+  </tr>
+  <tr>
+    <td style="width: 50%">
+      {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
+    </td>
+    {% if person.bio %}
+    <td style="width: 50%; padding-left: 5%">
+        {{ person.bio }}
+    </td>
+    {% endif %}
+  </tr>
+    <hr>
+  </table>
+  {% endfor %}
+
+  <h1 class="section-header"><b>Alumni</b></h1>
+  {% for person in alumni %}
+  <table>
+  <tr>
+    <h1 id="{{ person.name }}" class="info-page-header blog-headline">{{ person.name }}</h1>
+  </tr>
+  <tr>
+    <td style="width: 50%">
+      {% if person.image %}<img class="profileImage" src="/coop{{ person.image.url }}" />{% endif %}
+    </td>
+    {% if person.bio %}
+    <td style="width: 50%; padding-left: 5%">
+        {{ person.bio }}
+    </td>
+    {% endif %}
+  </tr>
+    <hr>
+  </table>
   {% endfor %}
 {% endblock %}

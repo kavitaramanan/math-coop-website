@@ -3,7 +3,7 @@
 {% block nav %}
   <div class="navigation-bar">
     <a href="{% url 'people' %}" class="nav-link">People</a>
-    <a href="{% url 'outreach' %}" class="nav-link w--current">Outreach</a></div>
+    <a href="{% url 'outreach' %}" class="nav-link w--current">Outreach Events</a></div>
     <a href="{% url 'pres' %}" class="nav-link">Presentations</a></div>
   </div>         
 {% endblock %}
@@ -22,7 +22,7 @@
         Location: {{ outreach.location }}<br/>
         Date: {{ outreach.date }}<br/>
         Description: {{ outreach.description }} <br/>
-        Presenter(s): {% for person in outreach.people %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/people#{{person.name|urlencode}}" class="colorless">{{ person.name }}</a>{% endfor %}        
+        Presenter(s): {% for person in outreach.people %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/people#{{person.name|urlencode}}" class="byline-link">{{ person.name }}</a>{% endfor %}        
         </td>
       </tr>
     </table>

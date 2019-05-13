@@ -3,7 +3,7 @@
 {% block nav %}
   <div class="navigation-bar">
     <a href="{% url 'people' %}" class="nav-link">People</a>
-    <a href="{% url 'outreach' %}" class="nav-link">Outreach</a></div>
+    <a href="{% url 'outreach' %}" class="nav-link">Outreach Events</a></div>
     <a href="{% url 'pres' %}" class="nav-link w--current">Presentations</a></div>
   </div>         
 {% endblock %}
@@ -23,7 +23,7 @@
             {% if pres.summary %}<br /> <b>Summary</b>: {{ pres.summary }} {% endif %}
             {% if pres.level %}<br /> <b>Level</b>: {{ pres.level }} {% endif %}
             {% if pres.topics %}<br /> <b>Topics</b>: {{ pres.topics }} {% endif %}
-            <br /> File(s):{% for file in pres.files %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/download/?file_name={{file.f.name|urlencode}}" class="colorless" download="{{file.f.name}}">{{file}}</a>{% endfor %}
+            <br /> File(s):{% for file in pres.files %}{% if forloop.first %}{% else %}, {% endif %}<a href="/coop/download/?file_name={{file.f.name|urlencode}}" class="byline-link" download="{{file.f.name}}">{{file}}</a>{% endfor %}
         </td>
       </tr>
     </table>

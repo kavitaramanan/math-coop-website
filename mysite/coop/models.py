@@ -24,6 +24,12 @@ class Person(models.Model):
     name = models.CharField("Name", max_length=50)
     image = models.ImageField(upload_to="images/", blank=True, default="", null=True)
     bio = models.CharField("Biography", max_length=1000, blank=True, default="", null=True)
+    STATUS_CHOICES = (
+            ("faculty", "Faculty Adivsor"),
+            ("member", "Current Memeber"),
+            ("alumni", "Alumni")
+        )
+    status = models.CharField("status", max_length=7, choices=STATUS_CHOICES)
     
     def __str__(self):
         return self.name

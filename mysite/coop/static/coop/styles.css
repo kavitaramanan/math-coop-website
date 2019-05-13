@@ -1,8 +1,17 @@
+html {
+  height: 100%;
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 body {
-  background-color:white;
   height: 100%;
   width: 100%;
+  font-family: Montserrat, sans-serif;
+  font-size: 15px;
+  line-height: 21px;
   margin: 0px;
+  color: #d3d3d3;
 }
 
 summary {
@@ -11,75 +20,213 @@ summary {
   font-weight: normal;
 }
 
-a {
-  cursor: pointer;
-}
-
-td {
-  vertical-align: top;
-}
-
-li {
-  margin-bottom: 5px;
-}
-
-h1, h2, h3, h4, p, li {
-  font-family: Arial,Helvetica,sans-serif;
-}
-
-#container {
-  /* background-color: whitesmoke; */
-  width: 100%;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#left {
-  padding-left: 50px;
-  width: 66%;
-}
-
-#right {
-  width: 99%;
-}
-
-#picture-1 {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-#header {
-  width: 100%;
-  text-align: center;
-}
-
-#content {
-  float: right;
-  text-align: left;
-  width: 85%;
+h1 {
   margin-top: 0px;
+  margin-bottom: 10px;
+  font-family: Montserrat, sans-serif;
+  font-size: 32px;
+  line-height: 35px;
+  font-weight: 700;
 }
 
-#newTopicNameInput {
-  height: 24px;
-}
-
-#logo {
-  text-align: center;
-  margin-left: auto;
-  padding-right: 25px;
+h2 {
   margin-top: 0px;
+  margin-bottom: 10px;
+  font-family: Montserrat, sans-serif;
+  font-size: 26px;
+  line-height: 33px;
+  font-weight: 700;
 }
 
-#logoh, #logop {
-  color: white;
+h3 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
 }
-#logop {
+
+h4 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-family: Montserrat, sans-serif;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+h5 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 700;
+}
+
+h6 {
+  margin-top: 0px;
+  margin-bottom: 10px;
   font-size: 12px;
+  line-height: 18px;
+  font-weight: 700;
 }
-#logoh {
+
+p {
+  margin-top: 0px;
+  margin-bottom: 25px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.header-section {
+  padding-top: 76px;
+  padding-bottom: 76px;
+  text-align: center;
+}
+
+.navigation-bar {
+  margin-top: 45px;
+  text-align: center;
+}
+
+.section {
+  position: relative;
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+}
+
+.section.centered {
+  text-align: center;
+}
+
+.footer {
+  padding-top: 41px;
+  padding-bottom: 41px;
+  border-top: 1px solid rgba(0, 0, 0, .13);
+  text-align: center;
+}
+
+.footer.center {
+  text-align: center;
+}
+
+.nav-link {
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 7px 0px;
+  -webkit-transition: color 200ms ease;
+  transition: color 200ms ease;
+  font-family: Montserrat, sans-serif;
+  color: #303030;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  color: #f5f5f5;
+}
+
+.nav-link.w--current {
+  color: #b9b9b9;
+}
+
+.nav-link.w--current:hover {
+  color: #f5f5f5;
+}
+
+.nav-menu {
+  float: none;
+}
+
+.byline-wrapper {
+  margin-bottom: 25px;
+  color: rgb(130, 130, 130);
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.byline-link {
+  display: inline-block;
+  margin-right: 5px;
+  -webkit-transition: color 200ms ease;
+  transition: color 200ms ease;
+  font-family: Montserrat, sans-serif;
+  color: rgb(164, 164, 164);
+  text-decoration: none;
+}
+
+.byline-link:hover {
+  color: #f5f5f5;
+}
+
+.byline-text {
+  display: inline-block;
+  margin-right: 5px;
+  font-family: Montserrat, sans-serif;
+}
+
+.blog-home-link {
+  -webkit-transition: color 250ms ease;
+  transition: color 250ms ease;
+  font-family: Montserrat, sans-serif;
+  color: #b9b9b9;
+  text-decoration: none;
+}
+
+.blog-home-link:hover {
+  -webkit-transition: color 250ms ease;
+  transition: color 250ms ease;
+  color: #f5f5f5;
+}
+
+.blog-name {
+  display: inline-block;
   margin-bottom: 0px;
+  font-size: 53px;
+  line-height: 57px;
+  letter-spacing: 1px;
+}
+
+.blog-name:hover {
+  -webkit-transition: color 250ms ease;
+  transition: color 250ms ease;
+  color: #f5f5f5;
+}
+
+.blog-headline {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.heading-wrapper {
+  display: block;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-top: 110px;
+}
+
+.first-section-header {
+  text-align: center;
+  margin-bottom: center;
 }
 
 .content-text {
@@ -88,18 +235,6 @@ h1, h2, h3, h4, p, li {
 
 .hr {
   width: 90%;
-}
-
-.uploadA {
-  color: black;
-  cursor: pointer;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border-radius: 3px;
-  text-decoration: underline;
-  height: 24px;
 }
 
 .profileImage {
@@ -114,73 +249,3 @@ h1, h2, h3, h4, p, li {
   margin-top: 30px;
 }
 
-.colorless{
-  color: #8f8f8f;
-}
-
-/* Navbar */
-ul.base_nav {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  flex-shrink: 1;
-  list-style-type: none;
-  margin: 0px;
-  font-size: 22px;
-  height: 150px;
-  overflow: hidden;
-  background-color: #67caea;
-  background-image: linear-gradient(to top right, #67caea, #67caea, purple);
-}
-
-li.base_nav {
-  float: left;
-  text-align: left;
-  margin-top: 30px;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  border-radius: 7px;
-}
-
-li.base_nav a {
-  color: white;
-  display: block;
-  margin-right: 4px;
-  padding: 0px 16px;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-/* Change the link color to #111 (black) on hover */
-li.base_nav a:hover {
-  /* background-color: #111; */
-  cursor: pointer;
-}
-
-li.base_nav.selected {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-/* Navbar */
-ul.manage_nav {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: black;
-}
-
-li.manage_nav {
-  float: left;
-}
-
-li.manage_nav a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-/* Change the link color to #111 (black) on hover */
-li.manage_nav a:hover {
-  /* background-color: #222; */
-  cursor: pointer;
-}
