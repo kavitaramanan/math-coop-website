@@ -26,7 +26,7 @@ class Person(models.Model):
     bio = models.CharField("Biography", max_length=1000, blank=True, default="", null=True)
     STATUS_CHOICES = (
             ("faculty", "Faculty Adivsor"),
-            ("member", "Current Memeber"),
+            ("member", "Current Member"),
             ("alumni", "Alumni")
         )
     status = models.CharField("status", max_length=7, choices=STATUS_CHOICES)
